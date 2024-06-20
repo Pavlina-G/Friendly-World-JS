@@ -9,7 +9,7 @@ const { parseError } = require('../util');
 const dataRouter = Router();
 
 dataRouter.get('/create', isUser(), async (req, res) => {
-    res.render('create', {title: 'Register'});
+    res.render('create', {title: ''});
 });
 
 

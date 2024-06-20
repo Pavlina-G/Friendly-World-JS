@@ -8,7 +8,7 @@ const { parseError } = require('../util');
 const userRouter = Router();
 
 userRouter.get('/register', isGuest(), (req, res) => {
-    res.render('register');
+    res.render('register', {title: 'Register'});
 });
 
 // TODO change validation
