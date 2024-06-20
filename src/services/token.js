@@ -1,7 +1,6 @@
 require('dotenv').config();
 const jwt = require('jsonwebtoken');
 
-// TODO check/change identity name(email, username) from exam description
 
 function createToken(user) {
     const payload = {

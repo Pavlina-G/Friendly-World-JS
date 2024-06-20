@@ -11,14 +11,13 @@ userRouter.get('/register', isGuest(), (req, res) => {
     res.render('register', {title: 'Register'});
 });
 
-// TODO change validation
 
 userRouter.post(
     '/register',
     isGuest(),
     //Adding validation
     body('email').trim().isEmail().isLength({ min: 10 }).withMessage('Please enter a valid email 10 charachters long'),
-    body('password').trim().isLength({ min: 3 }).withMessage('Password must be at least 4 characters long'),
+    body('password').trim().isLength({ min: 4}).withMessage('Password must be at least 4 characters long'),
     body('repass').trim().custom((value, { req }) => value == req.body.password).withMessage('Passwords don\'t match'),
     async (req, res) => {
         const { email, password } = req.body;
@@ -46,12 +45,10 @@ userRouter.get('/login', isGuest(), (req, res) => {
     res.render('login');
 });
 
-// TODO change identity-name (email/username)
 
 userRouter.post(
     '/login',
     isGuest(),
-    //Adding validation
     body('email').trim(),
     body('password').trim(),
     async (req, res) => {

@@ -1,0 +1,49 @@
+This file should help with data for creating animal
+
+[
+    {
+        "name": "Panda",
+        "years": 10,
+        "kind": "Mammal",
+        "image": "https://cdn1.byjus.com/wp-content/uploads/blog/2023/05/18144244/STIM_Cute-Little-Panda-scaled.jpeg",
+        "need": "Bamboo",
+        "location": "China",
+        "description": "Pandas have distinctive black and white fur."
+    },
+    {
+        "name": "Polar Bear",
+        "years": 15,
+        "kind": "Mammal",
+        "image": "https://www.natureplprints.com/p/729/polar-bear-cubs-ursus-maritimus-20361894.jpg.webp",
+        "need": "Seals and fish",
+        "location": "Arctic",
+        "description": "Polar bears are well-adapted to cold environments."
+    },
+    {
+        "name": "Penguin",
+        "years": 20,
+        "kind": "Bird",
+        "image": "https://wwf.ca/wp-content/uploads/2023/09/WW22465-scaled.jpg",
+        "need": "Fish",
+        "location": "Antarctica",
+        "description": "They are excellent swimmers and live in colonies."
+    },
+    {
+        "name": "Wolf",
+        "years": 12,
+        "kind": "Mammal",
+        "image": "https://www.worldlandtrust.org/wp-content/uploads/2023/07/Grey-wolf.jpg",
+        "need": "Meat",
+        "location": "Various habitats",
+        "description": "Wolves are social animals that hunt in packs."
+    },
+    {
+        "name": "Koala",
+        "years": 8,
+        "kind": "Mammal",
+        "image": "https://good-nature-blog-uploads.s3.amazonaws.com/uploads/2023/05/Mother-and-Baby-Koala-1280x640.jpg",
+        "need": "Eucalyptus leaves",
+        "location": "Australia",
+        "description": "Koalas are marsupials known for their tree-dwelling lifestyle."
+    }
+]

@@ -1,18 +1,16 @@
 const { User } = require("../models/User");
 const bcrypt = require('bcrypt');
 
-// TODO set identity name as in the exam descr.- email/username
-const identityName = 'email'
 
-async function register(identity, password) {
-    const existing = await User.findOne({ [identityName]: identity });
+async function register(email, password) {
+    const existing = await User.findOne({ email });
 
     if (existing) {
-        throw new Error(`This ${identityName} is already in use`)
+        throw new Error(`This ${email} is already in use`)
     }
 
     const user = new User({
-        [identityName]: identity,
+        email,
         password: await bcrypt.hash(password, 10)
     });
 
@@ -22,17 +20,17 @@ async function register(identity, password) {
 
 }
 
-async function login(identity, password) {
-    const user = await User.findOne({ [identityName]: identity });
+async function login(email, password) {
+    const user = await User.findOne({ email });
 
     if (!user) {
-        throw new Error(`Incorrect ${identityName} or password`);
+        throw new Error(`Incorrect ${email} or password`);
     }
 
     const match = await bcrypt.compare(password, user.password);
 
     if (!match) {
-        throw new Error(`Incorrect ${identityName} or password`);
+        throw new Error(`Incorrect ${email} or password`);
     }
 
     return user;
