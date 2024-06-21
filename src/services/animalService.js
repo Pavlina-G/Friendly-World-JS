@@ -90,6 +90,16 @@ async function donateAnimal(id, userId) {
     return animal;
 }
 
+async function searchAnimal(location){
+    const query = {};
+
+    if (location) {
+        query.location = new RegExp(location, 'i');
+    }
+    
+    return Animal.find(query).lean();
+}
+
 module.exports = {
     getAllAnimals,
     getLastThreeAnimals,
@@ -97,5 +107,6 @@ module.exports = {
     createAnimal,
     updateAnimal,
     deleteAnimalById,
-    donateAnimal
+    donateAnimal,
+    searchAnimal
 }

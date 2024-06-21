@@ -3,7 +3,7 @@ const { login, register } = require('../services/userService');
 const { createToken } = require('../services/token');
 const { Animal } = require('../models/Animal');
 const { User } = require('../models/User');
-const { getLastThreeAnimals, getAllAnimals, getAnimalById } = require('../services/animalService');
+const { getLastThreeAnimals, getAllAnimals, getAnimalById, searchAnimal } = require('../services/animalService');
 
 // TODO replace with real Router exam description
 
@@ -34,6 +34,16 @@ homeRouter.get('/animals/:id', async (req, res) => {
 
     res.render('details', {title: 'Animal', animal, isOwner, hasDonated});
 });
+
+homeRouter.get('/search', async (req, res) => {
+    console.log(req.query);
+
+    const { location } = req.query;
+    const animals = await searchAnimal(location)
+
+    res.render('search', { animals, location } )
+
+})
 
 
 module.exports = { homeRouter };    
