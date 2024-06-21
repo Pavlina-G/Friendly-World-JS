@@ -32,36 +32,41 @@ async function createAnimal(data, ownerId) {
 };
 
 async function updateAnimal(animalId, userId, data) {
-    const record = await Animal.findById(id);
+    const animal = await Animal.findById(animalId);
 
-    if (!record) {
-        throw new Error(`Record ${animalId} not found`);
+    if (!animal) {
+        throw new Error(`Animal with id ${animalId} has not found`);
     }
 
-    if (record.owner.toString() != userId) {
+    if (animal.owner.toString() != userId) {
         throw new Error('Access denied');
     }
 
-    // TODO replace with real properties
+    animal.name = data.name
+    animal.years = data.years
+    animal.kind = data.kind
+    animal.image = data.image
+    animal.need = data.need
+    animal.location = data.location
+    animal.description = data.description
 
-    record.propItem = data.propItem;
-    
-    await record.save()
 
-    return record;
+    await animal.save()
+
+    return animal;
 };
 
 async function deleteAnimalById(animalId, userId) {
-    const record = await Animal.findById(id);
+    const animal = await Animal.findById(animalId);
 
-    if (!record) {
+    if (!animal) {
         throw new Error(`Record ${animalId} not found`);
     }
 
-    if (record.owner.toString() != userId) {
+    if (animal.owner.toString() != userId) {
         throw new Error('Access denied');
     }
-    await Animal.findByIdAndDelete(animalId);
+    await Animal.findByIdAndDelete(animal._id);
 }
 
 async function donateAnimal(id, userId) {
