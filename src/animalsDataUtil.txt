@@ -34,7 +34,7 @@ This file should help with data for creating animal
         "kind": "Mammal",
         "image": "https://www.worldlandtrust.org/wp-content/uploads/2023/07/Grey-wolf.jpg",
         "need": "Meat",
-        "location": "Various habitats",
+        "location": "Europe",
         "description": "Wolves are social animals that hunt in packs."
     },
     {

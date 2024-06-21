@@ -64,11 +64,33 @@ async function deleteAnimalById(animalId, userId) {
     await Animal.findByIdAndDelete(animalId);
 }
 
+async function donateAnimal(id, userId) {
+    const animal = await Animal.findById(id);
+
+    if (!animal) {
+        throw new Error(`This animal with id ${id} is not found`);
+    }
+
+    if (animal.owner.toString() == userId) {
+        throw new Error('Access denied');
+    }
+    if (animal.donations.find(d => d.toString() == userId)) {
+        return;
+    }
+
+    animal.donations.push(userId);
+
+    await animal.save()
+
+    return animal;
+}
+
 module.exports = {
     getAllAnimals,
     getLastThreeAnimals,
     getAnimalById,
     createAnimal,
     updateAnimal,
-    deleteAnimalById
+    deleteAnimalById,
+    donateAnimal
 }
